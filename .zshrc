@@ -14,6 +14,7 @@ fi
 export PATH="$PATH:/home/nick/.dotnet/tools"        
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
+export DOTNET_ENVIRONMENT="Development"
 
 alias ls='eza -1 --icons'
 alias cat='bat'
@@ -29,8 +30,15 @@ alias paste='kitten clipboard -g'
 
 . "$HOME/.cargo/env"
 
-export DOTNET_ENVIRONMENT="Development"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(zoxide init zsh)"
+
+# bun completions
+[ -s "/home/nick/.bun/_bun" ] && source "/home/nick/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
